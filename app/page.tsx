@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
               height={24}
               priority
             />
+            <Button>Click me</Button>
           </a>
         </div>
       </div>
