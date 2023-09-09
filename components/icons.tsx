@@ -1,7 +1,8 @@
-import { Command, LucideIcon } from "lucide-react";
+import { Command, LucideIcon, X } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
-    logo: Command
+    logo: Command,
+    close: X,
 }

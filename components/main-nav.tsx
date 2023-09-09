@@ -7,6 +7,7 @@ import { MainNavItem } from "@/types"
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
 import { cn } from "@/lib/utils"
+import { MobileNav } from "@/components/mobile-nav"
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -15,7 +16,7 @@ interface MainNavProps {
 
 export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
-  // const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
+  const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -44,7 +45,7 @@ export function MainNav({ items, children }: MainNavProps) {
           ))}
         </nav>
       ) : null}
-      {/* <button
+      <button
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
@@ -53,7 +54,7 @@ export function MainNav({ items, children }: MainNavProps) {
       </button>
       {showMobileMenu && items && (
         <MobileNav items={items}>{children}</MobileNav>
-      )} */}
+      )}
     </div>
   )
 }
