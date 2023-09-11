@@ -8,8 +8,12 @@ export const metadata = {
 
 export default function OverviewPage() {
     return (
-        <div>
-            <MainNav items={baseNavConfig.mainNav} />
+        <div className="flex min-h-screen flex-col">
+            <header className="container z-40 bg-background">
+                <div className="flex h-20 items-center justify-between py-6">
+                    <MainNav items={baseNavConfig.mainNav} />
+                </div>
+            </header>
             <Button>Overview</Button>
         </div>
     )
