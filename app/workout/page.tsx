@@ -2,7 +2,7 @@ import { MainNav } from "@/components/main-nav"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { baseNavConfig } from "@/config/base-nav"
 import { SignedIn, UserButton, SignedOut } from "@clerk/nextjs"
-import { Link } from "lucide-react"
+import Link from "next/link"
 
 export const metadata = {
     title: "Workout",

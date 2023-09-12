@@ -14,7 +14,7 @@ export default function OverviewPage() {
     const { isLoaded, isSignedIn, user } = useUser();
 
     // In case the user signs out while on the page.
-    var authMsg = "";
+    let authMsg = "";
     if (!isLoaded || !isSignedIn) {
         authMsg = "You need to log in to see something here"
     } else {

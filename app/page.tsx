@@ -2,8 +2,8 @@ import { MainNav } from '@/components/main-nav'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { baseNavConfig } from '@/config/base-nav'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import { Link } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
