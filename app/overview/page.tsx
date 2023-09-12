@@ -31,11 +31,6 @@ export default function OverviewPage() {
                             <UserButton afterSignOutUrl="/" />
                         </SignedIn>
                         <SignedOut>
-                            {/* <SignInButton mode='modal'>
-                                <button className='rounded border border-gray-400 px-3 py-0.5'>
-                                    Sign in
-                                </button>
-                            </SignInButton> */}
                             <Link href="/sign-in" className={buttonVariants({ variant: "secondary", size: "sm" })}>Sign in</Link>
                         </SignedOut>
                     </nav>
