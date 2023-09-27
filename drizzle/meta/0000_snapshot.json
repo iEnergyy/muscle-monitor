@@ -1,0 +1,521 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "mysql",
+  "tables": {
+    "equipment": {
+      "name": "equipment",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "equipment_id": {
+          "name": "equipment_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "exercise": {
+      "name": "exercise",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "muscle_group_id": {
+          "autoincrement": false,
+          "name": "muscle_group_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "equipment_id": {
+          "autoincrement": false,
+          "name": "equipment_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "exercise_id": {
+          "name": "exercise_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "muscle_group_id": {
+          "name": "muscle_group_id",
+          "columns": [
+            "muscle_group_id"
+          ],
+          "isUnique": false
+        },
+        "equipment_id": {
+          "name": "equipment_id",
+          "columns": [
+            "equipment_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "muscle_group": {
+      "name": "muscle_group",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "muscle_group_id": {
+          "name": "muscle_group_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "routine": {
+      "name": "routine",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "start_date": {
+          "autoincrement": false,
+          "name": "start_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "end_date": {
+          "autoincrement": false,
+          "name": "end_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "active": {
+          "autoincrement": false,
+          "name": "active",
+          "type": "tinyint",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "routine_id": {
+          "name": "routine_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "user_id": {
+          "name": "user_id",
+          "columns": [
+            "user_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "routine_workout": {
+      "name": "routine_workout",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "routine_id": {
+          "autoincrement": false,
+          "name": "routine_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "workout_id": {
+          "autoincrement": false,
+          "name": "workout_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "routine_workout_id": {
+          "name": "routine_workout_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "routine_id": {
+          "name": "routine_id",
+          "columns": [
+            "routine_id"
+          ],
+          "isUnique": false
+        },
+        "workout_id": {
+          "name": "workout_id",
+          "columns": [
+            "workout_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "user_progress": {
+      "name": "user_progress",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exercise_id": {
+          "autoincrement": false,
+          "name": "exercise_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "user_progress_id": {
+          "name": "user_progress_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "user_id": {
+          "name": "user_id",
+          "columns": [
+            "user_id"
+          ],
+          "isUnique": false
+        },
+        "exercise_id": {
+          "name": "exercise_id",
+          "columns": [
+            "exercise_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "users": {
+      "name": "users",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "autoincrement": false,
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "first_name": {
+          "autoincrement": false,
+          "name": "first_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "autoincrement": false,
+          "name": "last_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "users_id": {
+          "name": "users_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "workout": {
+      "name": "workout",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date": {
+          "autoincrement": false,
+          "name": "date",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notes": {
+          "autoincrement": false,
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "workout_id": {
+          "name": "workout_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "user_id": {
+          "name": "user_id",
+          "columns": [
+            "user_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "workout_exercise": {
+      "name": "workout_exercise",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "workout_id": {
+          "autoincrement": false,
+          "name": "workout_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exercise_id": {
+          "autoincrement": false,
+          "name": "exercise_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sets": {
+          "autoincrement": false,
+          "name": "sets",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "repetitions": {
+          "autoincrement": false,
+          "name": "repetitions",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "weight": {
+          "autoincrement": false,
+          "name": "weight",
+          "type": "decimal(10,0)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "duration": {
+          "autoincrement": false,
+          "name": "duration",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rest_time": {
+          "autoincrement": false,
+          "name": "rest_time",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "workout_exercise_id": {
+          "name": "workout_exercise_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "workout_id": {
+          "name": "workout_id",
+          "columns": [
+            "workout_id"
+          ],
+          "isUnique": false
+        },
+        "exercise_id": {
+          "name": "exercise_id",
+          "columns": [
+            "exercise_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
