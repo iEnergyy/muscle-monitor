@@ -32,9 +32,7 @@
       "compositePrimaryKeys": {
         "equipment_id": {
           "name": "equipment_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {},
@@ -83,24 +81,18 @@
       "compositePrimaryKeys": {
         "exercise_id": {
           "name": "exercise_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "muscle_group_id": {
           "name": "muscle_group_id",
-          "columns": [
-            "muscle_group_id"
-          ],
+          "columns": ["muscle_group_id"],
           "isUnique": false
         },
         "equipment_id": {
           "name": "equipment_id",
-          "columns": [
-            "equipment_id"
-          ],
+          "columns": ["equipment_id"],
           "isUnique": false
         }
       },
@@ -135,9 +127,7 @@
       "compositePrimaryKeys": {
         "muscle_group_id": {
           "name": "muscle_group_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {},
@@ -200,17 +190,13 @@
       "compositePrimaryKeys": {
         "routine_id": {
           "name": "routine_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "user_id": {
           "name": "user_id",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "isUnique": false
         }
       },
@@ -245,24 +231,18 @@
       "compositePrimaryKeys": {
         "routine_workout_id": {
           "name": "routine_workout_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "routine_id": {
           "name": "routine_id",
-          "columns": [
-            "routine_id"
-          ],
+          "columns": ["routine_id"],
           "isUnique": false
         },
         "workout_id": {
           "name": "workout_id",
-          "columns": [
-            "workout_id"
-          ],
+          "columns": ["workout_id"],
           "isUnique": false
         }
       },
@@ -297,24 +277,18 @@
       "compositePrimaryKeys": {
         "user_progress_id": {
           "name": "user_progress_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "user_id": {
           "name": "user_id",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "isUnique": false
         },
         "exercise_id": {
           "name": "exercise_id",
-          "columns": [
-            "exercise_id"
-          ],
+          "columns": ["exercise_id"],
           "isUnique": false
         }
       },
@@ -356,9 +330,7 @@
       "compositePrimaryKeys": {
         "users_id": {
           "name": "users_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {},
@@ -407,17 +379,13 @@
       "compositePrimaryKeys": {
         "workout_id": {
           "name": "workout_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "user_id": {
           "name": "user_id",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "isUnique": false
         }
       },
@@ -487,24 +455,18 @@
       "compositePrimaryKeys": {
         "workout_exercise_id": {
           "name": "workout_exercise_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "workout_id": {
           "name": "workout_id",
-          "columns": [
-            "workout_id"
-          ],
+          "columns": ["workout_id"],
           "isUnique": false
         },
         "exercise_id": {
           "name": "exercise_id",
-          "columns": [
-            "exercise_id"
-          ],
+          "columns": ["exercise_id"],
           "isUnique": false
         }
       },

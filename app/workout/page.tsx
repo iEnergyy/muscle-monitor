@@ -34,7 +34,7 @@ export default function WorkoutPage() {
           </nav>
         </div>
       </header>
-      <div className="container py-6 lg:py-10 z-40 bg-background">
+      <div className="container z-40 bg-background py-6 lg:py-10">
         <SignedIn>
           <div className="flex items-center justify-between">
             <div className="space-y-1">
@@ -49,12 +49,12 @@ export default function WorkoutPage() {
           <Separator className="my-4" />
           <div className="relative">
             <ScrollArea>
-              <div className="grid grid-rows-2 gap-4 grid-flow-col">
+              <div className="grid grid-flow-col grid-rows-2 gap-4">
                 {getMuscleGroups.map((muscleGroup) => (
                   <MuscleGroupAlbum
                     key={muscleGroup.name}
                     muscleGroup={muscleGroup}
-                    className="w-[200px] border-2 rounded p-4 max-sm:w-[120px]"
+                    className="w-[200px] rounded border-2 p-4 max-sm:w-[120px]"
                     aspectRatio="portrait"
                     width={250}
                     height={330}
