@@ -6,7 +6,7 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   signInUrl: "/sign-in",
   publicRoutes: ["/", "/overview", "/workout"],
-  ignoredRoutes: ["/api/webhooks/user"]
+  ignoredRoutes: ["/api/webhooks/user"],
 });
 
 export const config = {

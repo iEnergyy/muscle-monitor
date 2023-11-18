@@ -1,6 +1,10 @@
 import { MainNav } from "@/components/main-nav";
+import { MuscleGroupAlbum } from "@/components/muscle-group-album";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import { baseNavConfig } from "@/config/base-nav";
+import { getAllMuscleGroups } from "@/services/musclegroup-service";
 import { SignedIn, UserButton, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -29,7 +33,41 @@ export default function WorkoutPage() {
           </nav>
         </div>
       </header>
-      <Button>Workout</Button>
+      <div className="container z-40 bg-background py-6 lg:py-10">
+        <SignedIn>
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Muscle groups
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Showing existing muscle groups. Add if needed.
+              </p>
+            </div>
+          </div>
+          <Separator className="my-4" />
+          <div className="relative">
+            <ScrollArea>
+              <div className="grid grid-flow-col grid-rows-2 gap-4">
+                {getAllMuscleGroups.map((muscleGroup) => (
+                  <MuscleGroupAlbum
+                    key={muscleGroup.name}
+                    muscleGroup={muscleGroup}
+                    className="w-[200px] rounded border-2 p-4 max-sm:w-[120px]"
+                    aspectRatio="portrait"
+                    width={250}
+                    height={330}
+                  />
+                ))}
+              </div>
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+          </div>
+        </SignedIn>
+        <SignedOut>
+          <section>You need to log in to see something</section>
+        </SignedOut>
+      </div>
     </div>
   );
 }

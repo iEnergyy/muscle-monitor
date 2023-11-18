@@ -122,6 +122,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "imageUrl": {
+          "autoincrement": false,
+          "name": "imageUrl",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "compositePrimaryKeys": {
