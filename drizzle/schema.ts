@@ -53,6 +53,7 @@ export const muscleGroup = mysqlTable(
     id: int("id").autoincrement().notNull(),
     name: varchar("name", { length: 255 }),
     description: text("description"),
+    imageUrl: varchar("imageUrl", { length: 255 }),
   },
   (table) => {
     return {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { MuscleGroup } from "./data/musclegroup";
+import { MuscleGroup } from "@/services/musclegroup-service";
 import { ContextMenu, ContextMenuTrigger } from "@/components/ui/context-menu";
 
 interface MuscleGroupAlbumProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -24,8 +24,8 @@ export function MuscleGroupAlbum({
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
             <Image
-              src={muscleGroup.imageUrl}
-              alt={muscleGroup.description}
+              src={muscleGroup.imageUrl!}
+              alt={muscleGroup.description!}
               width={width}
               height={height}
               className={cn(

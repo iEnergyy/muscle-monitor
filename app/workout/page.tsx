@@ -1,11 +1,10 @@
-import { getMuscleGroups } from "@/components/data/musclegroup";
 import { MainNav } from "@/components/main-nav";
 import { MuscleGroupAlbum } from "@/components/muscle-group-album";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { baseNavConfig } from "@/config/base-nav";
-import { muscleGroup } from "@/db/schema";
+import { getAllMuscleGroups } from "@/services/musclegroup-service";
 import { SignedIn, UserButton, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -50,7 +49,7 @@ export default function WorkoutPage() {
           <div className="relative">
             <ScrollArea>
               <div className="grid grid-flow-col grid-rows-2 gap-4">
-                {getMuscleGroups.map((muscleGroup) => (
+                {getAllMuscleGroups.map((muscleGroup) => (
                   <MuscleGroupAlbum
                     key={muscleGroup.name}
                     muscleGroup={muscleGroup}
