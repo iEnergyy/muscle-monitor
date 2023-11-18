@@ -1,3 +1,4 @@
+import { ExerciseGallery } from "@/components/exercise-gallery";
 import { MainNav } from "@/components/main-nav";
 import { MuscleGroupAlbum } from "@/components/muscle-group-album";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -62,6 +63,8 @@ export default function WorkoutPage() {
               </div>
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
+            <Separator className="my-4" />
+            <ExerciseGallery></ExerciseGallery>
           </div>
         </SignedIn>
         <SignedOut>
