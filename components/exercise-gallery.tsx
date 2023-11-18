@@ -5,12 +5,15 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAllMuscleGroups } from "@/services/musclegroup-service";
 
 export function ExerciseGallery() {
   return (
     <section className="flex h-screen flex-col">
       <nav className="flex h-16 w-full items-center justify-between bg-gray-200 px-4 dark:bg-gray-800">
-        <h1 className="text-xl font-bold">Exercise Board</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Exercise Board
+        </h1>
         <div className="flex items-center">
           <div className="relative mr-4">
             <svg
@@ -47,42 +50,15 @@ export function ExerciseGallery() {
       <div className="flex flex-1 overflow-hidden">
         <aside className="w-64 overflow-auto border-r bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
           <nav className="space-y-1 py-4">
-            <Link
-              className="block rounded bg-gray-300 px-4 py-2 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800"
-              href="#"
-            >
-              Chest
-            </Link>
-            <Link
-              className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-              href="#"
-            >
-              Back
-            </Link>
-            <Link
-              className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-              href="#"
-            >
-              Arms
-            </Link>
-            <Link
-              className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-              href="#"
-            >
-              Legs
-            </Link>
-            <Link
-              className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-              href="#"
-            >
-              Shoulders
-            </Link>
-            <Link
-              className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-              href="#"
-            >
-              Core
-            </Link>
+            {getAllMuscleGroups.map((muscleGroup) => (
+              <Link
+                key={muscleGroup.id}
+                href="#"
+                className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+              >
+                {muscleGroup.name}
+              </Link>
+            ))}
           </nav>
         </aside>
         <main className="flex-1 overflow-y-auto bg-white p-4 dark:bg-gray-900">
