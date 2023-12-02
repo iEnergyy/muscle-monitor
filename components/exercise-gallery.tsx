@@ -94,6 +94,14 @@ export function ExerciseGallery({
                   <h2 className="text-lg font-bold">{exercise.name}</h2>
                 </div>
               ))}
+
+            {allExercises.filter(
+              (exercise) => exercise.muscleGroupId === selectedMuscleGroupId,
+            ).length === 0 && (
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                No exercises available. Please add.
+              </p>
+            )}
           </div>
         </main>
       </div>
