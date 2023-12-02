@@ -1,7 +1,7 @@
 import { ExerciseGallery } from "@/components/exercise-gallery";
 import { MainNav } from "@/components/main-nav";
 import { MuscleGroupAlbum } from "@/components/muscle-group-album";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { baseNavConfig } from "@/config/base-nav";

@@ -18,7 +18,7 @@ export function ExerciseGallery({
   allMuscleGroups,
   allExercises,
   ...props
-}: ExerciseGalleryProps) {
+}: Readonly<ExerciseGalleryProps>) {
   const [selectedMuscleGroupId, setSelectedMuscleGroupId] = useState(1); //Default to Chest
   const handleMuscleGroupClick = (id: number) => {
     setSelectedMuscleGroupId(id);
@@ -70,6 +70,8 @@ export function ExerciseGallery({
               <div
                 key={muscleGroup.id}
                 onClick={() => handleMuscleGroupClick(muscleGroup.id)}
+                onKeyDown={() => handleMuscleGroupClick(muscleGroup.id)}
+                tabIndex={muscleGroup.id}
                 className={`block rounded px-4 py-2 ${
                   selectedMuscleGroupId === muscleGroup.id
                     ? "bg-gray-200 dark:bg-gray-800"

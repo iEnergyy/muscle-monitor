@@ -1,6 +1,6 @@
 import { db } from "@/db/config";
 import { exercise } from "@/db/schema";
-import { InferSelectModel, eq } from "drizzle-orm";
+import { InferSelectModel } from "drizzle-orm";
 
 export type Exercise = InferSelectModel<typeof exercise>;
 
