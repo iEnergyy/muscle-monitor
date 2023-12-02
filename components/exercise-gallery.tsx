@@ -20,6 +20,14 @@ export function ExerciseGallery({
   ...props
 }: Readonly<ExerciseGalleryProps>) {
   const [selectedMuscleGroupId, setSelectedMuscleGroupId] = useState(1); //Default to Chest
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredExercises = allExercises.filter(
+    (exercise) =>
+      exercise.muscleGroupId === selectedMuscleGroupId &&
+      exercise.name!.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   const handleMuscleGroupClick = (id: number) => {
     setSelectedMuscleGroupId(id);
   };
@@ -37,6 +45,8 @@ export function ExerciseGallery({
               className="w-full appearance-none bg-white pl-8 shadow-none dark:bg-gray-900"
               placeholder="Search exercises..."
               type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="flex items-center">
@@ -71,7 +81,7 @@ export function ExerciseGallery({
         </aside>
         <main className="flex-1 overflow-y-auto bg-white p-4 dark:bg-gray-900">
           <div className="grid grid-cols-3 gap-4">
-            {allExercises
+            {filteredExercises
               .filter(
                 (exercise) => exercise.muscleGroupId === selectedMuscleGroupId,
               )
@@ -81,7 +91,7 @@ export function ExerciseGallery({
                 </div>
               ))}
 
-            {allExercises.filter(
+            {filteredExercises.filter(
               (exercise) => exercise.muscleGroupId === selectedMuscleGroupId,
             ).length === 0 && (
               <p className="text-lg text-gray-600 dark:text-gray-400">
