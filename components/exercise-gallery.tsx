@@ -2,12 +2,28 @@
  * v0 by Vercel.
  * @see https://v0.dev/t/6WjoViU7zXi
  */
+"use client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { getAllMuscleGroups } from "@/services/musclegroup-service";
+import { MuscleGroup } from "@/services/musclegroup-service";
+import { Exercise } from "@/services/exercise-service";
+import { useState } from "react";
 
-export function ExerciseGallery() {
+interface ExerciseGalleryProps extends React.HTMLAttributes<HTMLDivElement> {
+  allMuscleGroups: MuscleGroup[];
+  allExercises: Exercise[];
+}
+
+export function ExerciseGallery({
+  allMuscleGroups,
+  allExercises,
+  ...props
+}: ExerciseGalleryProps) {
+  const [selectedMuscleGroupId, setSelectedMuscleGroupId] = useState(1); //Default to Chest
+  const handleMuscleGroupClick = (id: number) => {
+    setSelectedMuscleGroupId(id);
+  };
+
   return (
     <section className="flex h-screen flex-col">
       <nav className="flex h-16 w-full items-center justify-between bg-gray-200 px-4 dark:bg-gray-800">
@@ -50,28 +66,32 @@ export function ExerciseGallery() {
       <div className="flex flex-1 overflow-hidden">
         <aside className="w-64 overflow-auto border-r bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
           <nav className="space-y-1 py-4">
-            {getAllMuscleGroups.map((muscleGroup) => (
-              <Link
+            {allMuscleGroups.map((muscleGroup) => (
+              <div
                 key={muscleGroup.id}
-                href="#"
-                className="block rounded px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+                onClick={() => handleMuscleGroupClick(muscleGroup.id)}
+                className={`block rounded px-4 py-2 ${
+                  selectedMuscleGroupId === muscleGroup.id
+                    ? "bg-gray-200 dark:bg-gray-800"
+                    : "hover:bg-gray-200 dark:hover:bg-gray-800"
+                }`}
               >
                 {muscleGroup.name}
-              </Link>
+              </div>
             ))}
           </nav>
         </aside>
         <main className="flex-1 overflow-y-auto bg-white p-4 dark:bg-gray-900">
           <div className="grid grid-cols-3 gap-4">
-            <div className="rounded border p-4">
-              <h2 className="text-lg font-bold">Push Ups</h2>
-            </div>
-            <div className="rounded border p-4">
-              <h2 className="text-lg font-bold">Pull Ups</h2>
-            </div>
-            <div className="rounded border p-4">
-              <h2 className="text-lg font-bold">Squats</h2>
-            </div>
+            {allExercises
+              .filter(
+                (exercise) => exercise.muscleGroupId === selectedMuscleGroupId,
+              )
+              .map((exercise) => (
+                <div key={exercise.id} className="rounded border p-4">
+                  <h2 className="text-lg font-bold">{exercise.name}</h2>
+                </div>
+              ))}
           </div>
         </main>
       </div>

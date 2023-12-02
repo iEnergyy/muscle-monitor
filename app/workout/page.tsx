@@ -5,6 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { baseNavConfig } from "@/config/base-nav";
+import { getAllExercise } from "@/services/exercise-service";
 import { getAllMuscleGroups } from "@/services/musclegroup-service";
 import { SignedIn, UserButton, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
@@ -64,7 +65,10 @@ export default function WorkoutPage() {
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
             <Separator className="my-4" />
-            <ExerciseGallery></ExerciseGallery>
+            <ExerciseGallery
+              allMuscleGroups={getAllMuscleGroups}
+              allExercises={getAllExercise}
+            ></ExerciseGallery>
           </div>
         </SignedIn>
         <SignedOut>
