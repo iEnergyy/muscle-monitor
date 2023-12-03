@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { baseNavConfig } from "@/config/base-nav";
+import { getAllEquipment } from "@/services/equipment-service";
 import { getAllExercise } from "@/services/exercise-service";
 import { getAllMuscleGroups } from "@/services/musclegroup-service";
 import { SignedIn, UserButton, SignedOut } from "@clerk/nextjs";
@@ -68,6 +69,7 @@ export default function WorkoutPage() {
             <ExerciseGallery
               allMuscleGroups={getAllMuscleGroups}
               allExercises={getAllExercise}
+              allEquipment={getAllEquipment}
             ></ExerciseGallery>
           </div>
         </SignedIn>

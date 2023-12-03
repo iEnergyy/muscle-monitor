@@ -8,19 +8,34 @@ import { Button } from "@/components/ui/button";
 import { MuscleGroup } from "@/services/musclegroup-service";
 import { Exercise } from "@/services/exercise-service";
 import { useState } from "react";
+import { AddExerciseDialog } from "@/components/add-exercise-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "./ui/label";
+import { Equipment } from "@/services/equipment-service";
 
 interface ExerciseGalleryProps extends React.HTMLAttributes<HTMLDivElement> {
   allMuscleGroups: MuscleGroup[];
   allExercises: Exercise[];
+  allEquipment: Equipment[];
 }
 
 export function ExerciseGallery({
   allMuscleGroups,
   allExercises,
+  allEquipment,
   ...props
 }: Readonly<ExerciseGalleryProps>) {
   const [selectedMuscleGroupId, setSelectedMuscleGroupId] = useState(1); //Default to Chest
   const [searchQuery, setSearchQuery] = useState("");
+  // const [isAddExerciseDialogOpen, setIsAddExerciseDialogOpen] = useState(false);
 
   const filteredExercises = allExercises.filter(
     (exercise) =>
@@ -50,9 +65,10 @@ export function ExerciseGallery({
             />
           </div>
           <div className="flex items-center">
-            <Button className="mr-2 rounded px-4 py-2 font-bold">
-              Add Exercise
-            </Button>
+            <AddExerciseDialog
+              allMuscleGroups={allMuscleGroups}
+              allEquipment={allEquipment}
+            ></AddExerciseDialog>
             <Button className="rounded px-4 py-2 font-bold" variant="secondary">
               Delete Exercise
             </Button>
