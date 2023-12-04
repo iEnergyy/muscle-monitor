@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -27,6 +28,7 @@ import {
   MuscleGroup,
   getAllMuscleGroups,
 } from "@/services/musclegroup-service";
+import { useState } from "react";
 4;
 
 interface AddExerciseDialogProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -39,6 +41,8 @@ export function AddExerciseDialog({
   allEquipment,
   ...props
 }: AddExerciseDialogProps) {
+  const [exerciseName, setExerciseName] = useState("");
+  const [exerciseDescription, setExerciseDescription] = useState("");
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -61,7 +65,8 @@ export function AddExerciseDialog({
             <Input
               id="name"
               placeholder="New exercise name"
-              value=""
+              value={exerciseName}
+              onChange={(e) => setExerciseName(e.target.value)}
               className="col-span-3"
             />
           </div>
@@ -72,7 +77,8 @@ export function AddExerciseDialog({
             <Input
               id="description"
               placeholder="Exercise description"
-              value=""
+              value={exerciseDescription}
+              onChange={(e) => setExerciseDescription(e.target.value)}
               className="col-span-3"
             />
           </div>
