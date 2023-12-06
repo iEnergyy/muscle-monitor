@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -43,8 +44,14 @@ export function AddExerciseDialog({
 }: AddExerciseDialogProps) {
   const [exerciseName, setExerciseName] = useState("");
   const [exerciseDescription, setExerciseDescription] = useState("");
+
+  const clearInputs = () => {
+    setExerciseName("");
+    setExerciseDescription("");
+  };
+
   return (
-    <Dialog>
+    <Dialog onOpenChange={clearInputs}>
       <DialogTrigger asChild>
         <Button className="mr-2 rounded px-4 py-2 font-bold">
           Add Exercise
@@ -124,7 +131,16 @@ export function AddExerciseDialog({
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Add</Button>
+          <DialogClose asChild>
+            <Button type="submit" onClick={clearInputs}>
+              Add
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button type="button" onClick={clearInputs} variant="secondary">
+              Cancel
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
