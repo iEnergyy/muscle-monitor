@@ -101,7 +101,10 @@ export function AddExerciseDialog({
                 <SelectGroup>
                   <SelectLabel>Muscles</SelectLabel>
                   {allMuscleGroups.map((muscleGroup) => (
-                    <SelectItem key={muscleGroup.id} value={muscleGroup.name!}>
+                    <SelectItem
+                      key={muscleGroup.id}
+                      value={muscleGroup.id.toString()}
+                    >
                       {muscleGroup.name}
                     </SelectItem>
                   ))}
@@ -121,7 +124,10 @@ export function AddExerciseDialog({
                 <SelectGroup>
                   <SelectLabel>Equipment</SelectLabel>
                   {allEquipment.map((muscleGroup) => (
-                    <SelectItem key={muscleGroup.id} value={muscleGroup.name!}>
+                    <SelectItem
+                      key={muscleGroup.id}
+                      value={muscleGroup.id.toString()}
+                    >
                       {muscleGroup.name}
                     </SelectItem>
                   ))}
