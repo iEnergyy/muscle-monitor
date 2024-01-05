@@ -11,7 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -21,15 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { db } from "@/db/config";
-import { muscleGroup } from "@/db/schema";
 import { Equipment } from "@/services/equipment-service";
-import { Exercise } from "@/services/exercise-service";
-import {
-  MuscleGroup,
-  getAllMuscleGroups,
-} from "@/services/musclegroup-service";
-import { useEffect, useState } from "react";
+import { MuscleGroup } from "@/services/musclegroup-service";
 import * as z from "zod";
 import { toast } from "@/components/ui/use-toast";
 import { useForm } from "react-hook-form";
@@ -37,14 +29,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { cn } from "@/lib/utils";
-import { clear } from "console";
 
 interface AddExerciseDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   allMuscleGroups: MuscleGroup[];
@@ -88,15 +77,7 @@ export function AddExerciseDialog({
   allMuscleGroups,
   allEquipment,
   ...props
-}: AddExerciseDialogProps) {
-  const [exerciseName, setExerciseName] = useState("");
-  const [exerciseDescription, setExerciseDescription] = useState("");
-
-  function clearInputs() {
-    setExerciseName("");
-    setExerciseDescription("");
-  }
-
+}: Readonly<AddExerciseDialogProps>) {
   function handleCancel() {
     form.reset();
   }
@@ -114,7 +95,6 @@ export function AddExerciseDialog({
 
   function onSubmit(data: ExerciseFormValues) {
     console.log(data);
-    clearInputs();
     form.reset();
 
     toast({
@@ -129,7 +109,7 @@ export function AddExerciseDialog({
 
   return (
     <Form {...form}>
-      <Dialog onOpenChange={clearInputs}>
+      <Dialog>
         <DialogTrigger asChild>
           <Button className="mr-2 rounded px-4 py-2 font-bold">
             Add Exercise
@@ -251,7 +231,6 @@ export function AddExerciseDialog({
                 <Button
                   type="submit"
                   disabled={!formState.isValid || isFormEmpty}
-                  // onClick={clearInputs}
                 >
                   Add
                 </Button>
