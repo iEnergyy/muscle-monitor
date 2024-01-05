@@ -92,10 +92,14 @@ export function AddExerciseDialog({
   const [exerciseName, setExerciseName] = useState("");
   const [exerciseDescription, setExerciseDescription] = useState("");
 
-  const clearInputs = () => {
+  function clearInputs() {
     setExerciseName("");
     setExerciseDescription("");
-  };
+  }
+
+  function handleCancel() {
+    form.reset();
+  }
 
   const form = useForm<ExerciseFormValues>({
     resolver: zodResolver(exerciseFormSchema),
@@ -247,13 +251,17 @@ export function AddExerciseDialog({
                 <Button
                   type="submit"
                   disabled={!formState.isValid || isFormEmpty}
-                  onClick={clearInputs}
+                  // onClick={clearInputs}
                 >
                   Add
                 </Button>
               </DialogClose>
               <DialogClose asChild>
-                <Button type="button" variant="secondary" onClick={clearInputs}>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={handleCancel}
+                >
                   Cancel
                 </Button>
               </DialogClose>
