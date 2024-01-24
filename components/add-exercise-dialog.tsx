@@ -34,6 +34,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  NewExerciseInput,
+  createExercise,
+  getAllExercise,
+} from "@/services/exercise-service";
 
 interface AddExerciseDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   allMuscleGroups: MuscleGroup[];
@@ -46,10 +51,10 @@ const exerciseFormSchema = z
     description: z.string({
       required_error: "Please write a description.",
     }),
-    muscle: z.string({
+    muscleGroupId: z.string({
       required_error: "Please select a muscle.",
     }),
-    equipment: z.string({
+    equipmentId: z.string({
       required_error: "Please select an equipment.",
     }),
   })
@@ -69,8 +74,8 @@ type ExerciseFormValues = z.infer<typeof exerciseFormSchema>;
 const defaultValues: Partial<ExerciseFormValues> = {
   name: "",
   description: "",
-  muscle: "",
-  equipment: "",
+  muscleGroupId: "",
+  equipmentId: "",
 };
 
 export function AddExerciseDialog({
@@ -93,9 +98,29 @@ export function AddExerciseDialog({
     (isDirty) => !isDirty,
   );
 
-  function onSubmit(data: ExerciseFormValues) {
+  async function onSubmit(data: ExerciseFormValues) {
     console.log(data);
     form.reset();
+    const newExercise: NewExerciseInput = {
+      name: data.name,
+      description: data.description,
+      muscleGroupId: parseInt(data.muscleGroupId),
+      equipmentId: parseInt(data.equipmentId),
+    };
+
+    try {
+      // Call createExercise separately and wait for it to complete
+      // await createExercise(newExercise);
+      const response = await fetch("/api/exercises", {
+        method: "POST",
+        body: JSON.stringify(newExercise),
+      });
+      const data = await response.json();
+
+      console.log("Exercise created successfully");
+    } catch (error) {
+      console.error("Error creating exercise");
+    }
 
     toast({
       title: "You submitted the following values:",
@@ -162,7 +187,7 @@ export function AddExerciseDialog({
             />
             <FormField
               control={form.control}
-              name="muscle"
+              name="muscleGroupId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Muscle</FormLabel>
@@ -195,7 +220,7 @@ export function AddExerciseDialog({
             />
             <FormField
               control={form.control}
-              name="equipment"
+              name="equipmentId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Equipment</FormLabel>
