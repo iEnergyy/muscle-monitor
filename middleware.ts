@@ -6,7 +6,12 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   signInUrl: "/sign-in",
   publicRoutes: ["/", "/overview", "/workout"],
-  ignoredRoutes: ["/api/webhooks/user", "/api/exercises"],
+  ignoredRoutes: [
+    "/api/webhooks/user",
+    "/api/exercises",
+    "/api/equipment",
+    "/api/muscle-groups",
+  ],
 });
 
 export const config = {
